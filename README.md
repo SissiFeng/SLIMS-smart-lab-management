@@ -1,6 +1,7 @@
 # SLIMS (Smart Laboratory Inventory Management System)
 
 A smart laboratory inventory management system that helps laboratories efficiently manage chemical inventory with intelligent features for safety monitoring and predictive analytics.
+<img width="1524" alt="截屏2024-11-10 16 29 07" src="https://github.com/user-attachments/assets/ce8b066e-77d1-4b3a-a5c1-9ee0aae8632b">
 
 ## Smart Features
 
@@ -11,6 +12,7 @@ A smart laboratory inventory management system that helps laboratories efficient
   - Barcode/QR code scanning for quick stock operations
   - Multi-location inventory tracking
   - Batch tracking and management
+<img width="1536" alt="截屏2024-11-10 16 29 29" src="https://github.com/user-attachments/assets/a11fcf64-1c67-4f4a-aff5-a52fc8156464">
 
 - **Advanced Safety System**
   - Real-time monitoring of:
@@ -32,6 +34,7 @@ A smart laboratory inventory management system that helps laboratories efficient
   - Cost optimization suggestions
   - Automated report generation with customizable templates
   - Data visualization dashboards
+<img width="1525" alt="截屏2024-11-10 16 29 59" src="https://github.com/user-attachments/assets/ebd355b4-50d4-49f3-9485-11770593c587">
 
 - **Smart Notifications**
   - Configurable alert thresholds
@@ -40,6 +43,7 @@ A smart laboratory inventory management system that helps laboratories efficient
   - Alert acknowledgment tracking
   - Escalation workflows
   - Historical alert analysis
+<img width="1526" alt="截屏2024-11-10 16 29 44" src="https://github.com/user-attachments/assets/fdd3603f-bfc8-4886-b6a4-f98bf8e0e9f5">
 
 ## Technical Features
 
@@ -205,6 +209,7 @@ A smart laboratory inventory management system that helps laboratories efficient
   ```
 
 ## Project Structure
+```
 SLIMS/
 ├── backend/
 │   ├── api/                  
@@ -242,4 +247,5 @@ backend/
 deployment/
 ├── docker-compose.yml        
 ├── Dockerfile             
-└── kubernetes/              
+└── kubernetes/
+```    
