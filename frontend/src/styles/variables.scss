@@ -1,0 +1,30 @@
+// styles/variables.scss
+:root {
+    // 主色调
+    --color-primary: #144E5A;
+    --color-secondary: #C07D53;
+    --color-accent: #FFDE6D;
+    --color-dark: #1C2520;
+    
+    // 背景色
+    --bg-primary: #FFFFFF;
+    --bg-secondary: #F5F7F6;
+    
+    // 文字颜色
+    --text-primary: #1C2520;
+    --text-secondary: #144E5A;
+    --text-light: #FFFFFF;
+    
+    // 功能色
+    --success-color: #52c41a;
+    --warning-color: #faad14;
+    --error-color: #f5222d;
+    
+    // 渐变
+    --gradient-primary: linear-gradient(135deg, #144E5A 0%, #1C2520 100%);
+    
+    // 阴影
+    --shadow-sm: 0 2px 4px rgba(28, 37, 32, 0.05);
+    --shadow-md: 0 4px 6px rgba(28, 37, 32, 0.1);
+    --shadow-lg: 0 10px 15px rgba(28, 37, 32, 0.1);
+  }

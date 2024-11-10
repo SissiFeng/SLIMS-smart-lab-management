@@ -1,0 +1,37 @@
+.main-content-wrapper {
+  margin-left: -120px;
+  width: calc(100% + 160px);
+  position: relative;
+  background: #f5f5f5;
+  min-height: 100%;
+  
+  .search-container {
+    padding: 24px 44px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: white;
+    margin-bottom: 16px;
+    
+    .ant-input-search {
+      width: 300px;
+    }
+  }
+  
+  .table-container {
+    padding: 0 44px;
+    
+    .inventory-table {
+      background: white;
+      border-radius: 4px;
+    }
+  }
+}
+
+.ant-layout-content {
+  padding: 24px 0;
+  background: #f5f5f5;
+  min-height: 100vh;
+  position: relative;
+  overflow: visible;
+}

@@ -1,0 +1,210 @@
+// src/components/layout/Layout.scss
+.app-layout {
+    min-height: 100vh;
+    background: #f5f7fa;
+  
+    .ant-layout-sider {
+      padding: 24px 16px;
+      background: white !important;
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+      
+      .logo {
+        margin-bottom: 48px;
+        padding: 0 8px;
+        font-size: 24px;
+        font-weight: 600;
+        color: #1c2520;
+      }
+  
+      .ant-menu {
+        border: none;
+        background: transparent;
+  
+        .ant-menu-item {
+          height: 48px;
+          line-height: 48px;
+          margin: 8px 0;
+          border-radius: 8px;
+          
+          &:hover {
+            background: rgba(20, 78, 90, 0.05);
+          }
+          
+          &.ant-menu-item-selected {
+            background: #144E5A;
+            color: white;
+          }
+        }
+      }
+    }
+  
+    .main-content-layout {
+      margin-left: 200px;
+      background: #f5f7fa;
+      
+      .ant-layout-header {
+        height: 64px;
+        padding: 0 48px;
+        background: white;
+        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+      }
+  
+      .content-area {
+        padding: 48px;
+        min-height: calc(100vh - 64px);
+      }
+    }
+  }
+  
+  // 卡片样式优化
+  .dashboard-card {
+    background: white;
+    border-radius: 12px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+    transition: all 0.3s ease;
+    
+    &:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    }
+  
+    .ant-card-body {
+      padding: 80px;
+    }
+  }
+  
+  // 表格样式优化
+  .ant-table-wrapper {
+    background: white;
+    border-radius: 12px;
+    padding: 24px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+  
+    .ant-table {
+      background: transparent;
+    }
+  }
+  
+  .app-header {
+    padding: 0 24px !important;
+    background: white !important;
+    display: flex;
+    align-items: center;
+    position: fixed;
+    width: 100%;
+    z-index: 1002;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
+
+    .logo {
+      font-size: 20px;
+      font-weight: bold;
+      color: #144E5A;
+      min-width: 120px;
+    }
+
+    .header-menu {
+      border: none;
+      background: transparent;
+      
+      .ant-menu-item {
+        padding: 0 24px;
+        margin: 0 8px;
+      }
+    }
+  }
+  
+  .ant-layout {
+    min-height: 100vh;
+  }
+  
+  .app-sider {
+    position: fixed;
+    height: 100vh;
+    left: 0;
+    top: 0;
+    background: white !important;
+    box-shadow: 2px 0 8px rgba(0, 0, 0, 0.06);
+    z-index: 1001;
+    
+    .ant-menu {
+      padding-top: 100px;
+      border-right: none;
+      
+      .ant-menu-item, .ant-menu-submenu-title {
+        height: 50px;
+        line-height: 50px;
+        margin: 8px 0;
+        padding-left: 32px !important;
+        
+        &:hover {
+          color: #144E5A;
+        }
+        
+        .anticon {
+          font-size: 18px;
+        }
+      }
+      
+      .ant-menu-item-selected {
+        background-color: #144E5A !important;
+        color: white;
+        border-radius: 0 24px 24px 0;
+        
+        &::after {
+          display: none;
+        }
+      }
+      
+      .ant-menu-submenu-title:hover {
+        color: #144E5A;
+      }
+      
+      .ant-menu-submenu-selected > .ant-menu-submenu-title {
+        color: #144E5A;
+      }
+      
+      .ant-menu-submenu {
+        .ant-menu-sub {
+          .ant-menu-item {
+            padding-left: 48px !important;
+            height: 40px;
+            line-height: 40px;
+            margin: 4px 0;
+          }
+        }
+      }
+      
+      .ant-menu-submenu:not(:last-child) {
+        margin-bottom: 8px;
+      }
+      
+      .anticon {
+        margin-right: 12px;
+      }
+    }
+  }
+  
+  .ant-layout-content {
+    margin: 64px 24px 24px;  // 顶部margin为header高度
+    padding: 24px;
+    background: #f5f5f5;
+    min-height: calc(100vh - 88px);
+    border-radius: 4px;
+    
+    .dashboard-container {
+      max-width: 1400px;  // 限制最大宽度
+      margin: 0 auto;     // 居中显示
+      width: 100%;
+      
+      .ant-row {
+        margin-bottom: 24px;
+        
+        &:last-child {
+          margin-bottom: 0;
+        }
+      }
+    }
+  }

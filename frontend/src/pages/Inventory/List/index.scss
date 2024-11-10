@@ -1,0 +1,18 @@
+.inventory-list {
+  background: white;
+  padding: 24px;
+  border-radius: 4px;
+  
+  .header-actions {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 24px;
+  }
+  
+  .ant-table-wrapper {
+    .ant-table-thead > tr > th {
+      background: #f5f5f5;
+    }
+  }
+}

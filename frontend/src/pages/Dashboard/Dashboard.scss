@@ -1,0 +1,23 @@
+.dashboard-container {
+  padding: 24px;
+  background: #f5f5f5;
+  min-height: 100%;
+  
+  .ant-row {
+    margin-left: 0 !important;
+    margin-right: 0 !important;
+  }
+  
+  .overview-card {
+    height: 500px;
+    
+    .ant-card-body {
+      height: calc(100% - 57px);  // 减去卡片标题的高度
+    }
+  }
+  
+  .ant-card {
+    height: 100%;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+  }
+}
