@@ -1,0 +1,20 @@
+.cell-culture-container {
+  padding: 24px;
+  
+  .cell-culture-tabs {
+    background: white;
+    padding: 16px 24px 0;
+    border-radius: 8px;
+    margin-bottom: 24px;
+    
+    .ant-tabs-nav {
+      margin-bottom: 0;
+    }
+  }
+  
+  .cell-culture-content {
+    background: white;
+    padding: 24px;
+    border-radius: 8px;
+  }
+} 

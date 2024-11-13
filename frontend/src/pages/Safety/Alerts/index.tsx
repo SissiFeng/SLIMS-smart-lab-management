@@ -126,25 +126,23 @@ const AlertManagement: React.FC = () => {
   ];
 
   return (
-    <div className="main-content-wrapper">
-      <div className="alert-management">
-        <Card 
-          title="Safety Alerts" 
-          extra={
-            <Tag color="error">
-              {alerts.length} Active Alerts
-            </Tag>
-          }
-        >
-          <Table
-            dataSource={alerts}
-            columns={columns}
-            loading={loading}
-            rowKey="id"
-            pagination={{ pageSize: 10 }}
-          />
-        </Card>
-      </div>
+    <div className="alert-management-page">  {/* 改用与 SCSS 文件匹配的类名 */}
+      <Card 
+        title="Safety Alerts" 
+        extra={
+          <Tag color="error">
+            {alerts.length} Active Alerts
+          </Tag>
+        }
+      >
+        <Table
+          dataSource={alerts}
+          columns={columns}
+          loading={loading}
+          rowKey="id"
+          pagination={{ pageSize: 10 }}
+        />
+      </Card>
     </div>
   );
 };

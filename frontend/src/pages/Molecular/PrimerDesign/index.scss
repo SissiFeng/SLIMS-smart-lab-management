@@ -1,0 +1,28 @@
+.primer-design-page {
+  .ant-card {
+    margin-bottom: 24px;
+  }
+
+  .primer-table {
+    margin-top: 16px;
+    
+    code {
+      background-color: #f5f5f5;
+      padding: 2px 4px;
+      border-radius: 4px;
+    }
+  }
+
+  .ant-form-item {
+    margin-bottom: 16px;
+  }
+
+  .ant-card-head {
+    border-bottom: none;
+  }
+
+  .ant-tag {
+    min-width: 60px;
+    text-align: center;
+  }
+} 

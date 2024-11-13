@@ -1,163 +1,85 @@
 // src/pages/Safety/Monitor/index.tsx
-import React, { useEffect, useState } from 'react';
-import { Card, Row, Col, Statistic, Table, Tag } from 'antd';
-import { WarningOutlined } from '@ant-design/icons';
+import React, { useState, useEffect } from 'react';
+import { Card, Row, Col, Statistic, Table, Tag, Space, Alert, Button } from 'antd';
+import { WarningOutlined, AlertOutlined, SoundOutlined } from '@ant-design/icons';
+import EnvironmentMonitor from './components/EnvironmentMonitor';
+import ChemicalHazards from './components/ChemicalHazards';
+import AlertsPanel from './components/AlertsPanel';
 import './index.scss';
 
-interface SafetyStatus {
-  environment: {
-    locations: {
-      id: string;
-      zone: string;
-      temperature: number;
-      humidity: number;
-      pressure: number;
-      last_checked: string;
-      status: 'normal' | 'warning';
-    }[];
-  };
-  chemicals: {
-    total: number;
-    expired: number;
-    expiring_soon: number;
-    hazardous: number;
-  };
+interface EnvironmentData {
+  id: string;
+  zone: string;
+  temperature: number;
+  humidity: number;
+  pressure: number;
+  co2_level?: number;
+  o2_level?: number;
+  last_checked: string;
+  status: 'normal' | 'warning' | 'critical';
+}
+
+interface ChemicalAlert {
+  id: string;
+  chemical: string;
+  hazard_type: string;
+  location: string;
+  status: 'active' | 'resolved';
+  timestamp: string;
+  severity: 'low' | 'medium' | 'high';
 }
 
 const SafetyMonitor: React.FC = () => {
-  const [safetyData, setSafetyData] = useState<SafetyStatus>({
-    environment: {
-      locations: []
-    },
-    chemicals: {
-      total: 0,
-      expired: 0,
-      expiring_soon: 0,
-      hazardous: 0
-    }
-  });
+  const [activeAlerts, setActiveAlerts] = useState<number>(0);
+  const [environmentStatus, setEnvironmentStatus] = useState<'normal' | 'warning' | 'critical'>('normal');
   const [loading, setLoading] = useState(true);
 
+  // 模拟实时数据更新
   useEffect(() => {
-    // 模拟数据加载
-    setTimeout(() => {
-      setSafetyData({
-        environment: {
-          locations: [
-            {
-              id: '1',
-              zone: 'Zone A',
-              temperature: 22,
-              humidity: 45,
-              pressure: 1013,
-              last_checked: new Date().toISOString(),
-              status: 'normal'
-            },
-            {
-              id: '2',
-              zone: 'Zone B',
-              temperature: 24,
-              humidity: 55,
-              pressure: 1012,
-              last_checked: new Date().toISOString(),
-              status: 'warning'
-            }
-          ]
-        },
-        chemicals: {
-          total: 150,
-          expired: 3,
-          expiring_soon: 8,
-          hazardous: 12
-        }
-      });
-      setLoading(false);
-    }, 1000);
+    const timer = setInterval(() => {
+      // 这里应该是实际的API调用
+      updateEnvironmentData();
+    }, 30000); // 每30秒更新一次
+
+    return () => clearInterval(timer);
   }, []);
 
-  const columns = [
-    {
-      title: 'Zone',
-      dataIndex: 'zone',
-      key: 'zone',
-    },
-    {
-      title: 'Temperature (°C)',
-      dataIndex: 'temperature',
-      key: 'temperature',
-    },
-    {
-      title: 'Humidity (%)',
-      dataIndex: 'humidity',
-      key: 'humidity',
-    },
-    {
-      title: 'Status',
-      dataIndex: 'status',
-      key: 'status',
-      render: (status: string) => (
-        <Tag color={status === 'normal' ? 'success' : 'warning'}>
-          {status.toUpperCase()}
-        </Tag>
-      ),
-    },
-  ];
+  const updateEnvironmentData = () => {
+    // 模拟API调用
+    // 实际项目中应该连接到实时监控系统
+  };
 
   return (
-    <div className="main-content-wrapper">
-      <div className="safety-monitor">
-        <Row gutter={[24, 24]}>
-          <Col span={6}>
-            <Card>
-              <Statistic
-                title="Total Chemicals"
-                value={safetyData.chemicals.total}
-                loading={loading}
-              />
-            </Card>
-          </Col>
-          <Col span={6}>
-            <Card>
-              <Statistic
-                title="Expired Items"
-                value={safetyData.chemicals.expired}
-                valueStyle={{ color: '#cf1322' }}
-                prefix={<WarningOutlined />}
-                loading={loading}
-              />
-            </Card>
-          </Col>
-          <Col span={6}>
-            <Card>
-              <Statistic
-                title="Expiring Soon"
-                value={safetyData.chemicals.expiring_soon}
-                valueStyle={{ color: '#faad14' }}
-                loading={loading}
-              />
-            </Card>
-          </Col>
-          <Col span={6}>
-            <Card>
-              <Statistic
-                title="Hazardous Items"
-                value={safetyData.chemicals.hazardous}
-                valueStyle={{ color: '#722ed1' }}
-                loading={loading}
-              />
-            </Card>
-          </Col>
-        </Row>
+    <div className="safety-monitor-page">
+      {activeAlerts > 0 && (
+        <Alert
+          message={`${activeAlerts} Active Alerts`}
+          type="warning"
+          showIcon
+          icon={<SoundOutlined />}
+          action={
+            <Button size="small" danger>
+              View Alerts
+            </Button>
+          }
+          className="alerts-banner"
+        />
+      )}
 
-        <Card title="Environment Monitoring" className="environment-card" style={{ marginTop: 24 }}>
-          <Table
-            dataSource={safetyData.environment.locations}
-            columns={columns}
-            loading={loading}
-            rowKey="id"
-          />
-        </Card>
-      </div>
+      <Row gutter={[24, 24]}>
+        <Col span={16}>
+          <EnvironmentMonitor />
+        </Col>
+        <Col span={8}>
+          <ChemicalHazards />
+        </Col>
+      </Row>
+
+      <Row gutter={[24, 24]} style={{ marginTop: 24 }}>
+        <Col span={24}>
+          <AlertsPanel />
+        </Col>
+      </Row>
     </div>
   );
 };

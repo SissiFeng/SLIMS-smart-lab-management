@@ -1,62 +1,64 @@
 // frontend/src/pages/Analytics/index.tsx
-import React, { useState } from 'react';
-import { Card, Row, Col, Select, DatePicker, Button, Space } from 'antd';
-import { DownloadOutlined, LineChartOutlined } from '@ant-design/icons';
+import React from 'react';
+import { Tabs } from 'antd';
+import { useNavigate, useLocation, Outlet } from 'react-router-dom';
+import { LineChartOutlined, BarChartOutlined, FileTextOutlined } from '@ant-design/icons';
 import './index.scss';
 
-const { RangePicker } = DatePicker;
-const { Option } = Select;
-
-interface AnalyticsData {
-  id: string;
-  type: string;
-  period: string;
-  status: string;
-  generatedAt: string;
-}
-
 const Analytics: React.FC = () => {
-  const [reportType, setReportType] = useState<string>('all');
-  const [dateRange, setDateRange] = useState<[string, string] | null>(null);
+  const navigate = useNavigate();
+  const location = useLocation();
+  
+  // 从路径中获取当前活动的标签
+  const getActiveKey = () => {
+    const path = location.pathname.split('/');
+    return path[path.length - 1] || 'usage';
+  };
+
+  const items = [
+    {
+      key: 'usage',
+      label: (
+        <span>
+          <LineChartOutlined />
+          Usage Analysis
+        </span>
+      ),
+    },
+    {
+      key: 'cell-stats',
+      label: (
+        <span>
+          <BarChartOutlined />
+          Cell Statistics
+        </span>
+      ),
+    },
+    {
+      key: 'reports',
+      label: (
+        <span>
+          <FileTextOutlined />
+          Reports
+        </span>
+      ),
+    },
+  ];
+
+  const handleTabChange = (key: string) => {
+    navigate(`/analytics/${key}`);
+  };
 
   return (
-    <div className="main-content-wrapper">
-      <div className="analytics-container">
-        <Row gutter={[24, 24]}>
-          <Col span={24}>
-            <Card title="Analytics Dashboard">
-              <Space size="large" className="filter-container">
-                <Select 
-                  defaultValue="all" 
-                  style={{ width: 200 }}
-                  onChange={setReportType}
-                >
-                  <Option value="all">All Reports</Option>
-                  <Option value="inventory">Inventory Analysis</Option>
-                  <Option value="safety">Safety Analysis</Option>
-                  <Option value="usage">Usage Trends</Option>
-                </Select>
-                <RangePicker 
-                  style={{ width: 300 }}
-                  onChange={(dates) => {
-                    if (dates) {
-                      setDateRange([
-                        dates[0]?.toISOString() || '',
-                        dates[1]?.toISOString() || ''
-                      ]);
-                    }
-                  }}
-                />
-                <Button 
-                  type="primary" 
-                  icon={<LineChartOutlined />}
-                >
-                  Generate Analysis
-                </Button>
-              </Space>
-            </Card>
-          </Col>
-        </Row>
+    <div className="analytics-container">
+      <Tabs 
+        activeKey={getActiveKey()}
+        items={items}
+        onChange={handleTabChange}
+        className="analytics-tabs"
+      />
+      <div className="analytics-content">
+        <Outlet />
       </div>
     </div>
   );

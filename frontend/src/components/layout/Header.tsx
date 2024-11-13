@@ -16,6 +16,14 @@ const Header: React.FC = () => {
       label: 'Inventory'
     },
     {
+      key: 'cell-culture',
+      label: 'Cell Culture'
+    },
+    {
+      key: 'molecular',
+      label: 'Molecular Biology'
+    },
+    {
       key: 'safety',
       label: 'Safety'
     },
@@ -27,14 +35,14 @@ const Header: React.FC = () => {
 
   return (
     <AntHeader className="app-header">
-      <div className="logo">SLIMS</div>
+      <div className="logo">BLIMS</div>
       <Menu
         mode="horizontal"
         selectedKeys={[location.pathname.split('/')[1] || 'inventory']}
         items={menuItems}
         onClick={({ key }) => navigate(`/${key}`)}
         className="header-menu"
-        style={{ flex: 1, minWidth: '1000px', justifyContent: 'center' }}
+        style={{ flex: 1, minWidth: 1000, justifyContent: 'center' }}
       />
     </AntHeader>
   );

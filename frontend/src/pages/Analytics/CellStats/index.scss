@@ -1,0 +1,24 @@
+.cell-statistics {
+  .ant-card {
+    height: 100%;
+    
+    .ant-statistic {
+      .ant-statistic-title {
+        color: rgba(0, 0, 0, 0.45);
+      }
+      
+      .ant-statistic-content {
+        color: rgba(0, 0, 0, 0.85);
+      }
+    }
+  }
+  
+  .chart-container {
+    height: 300px;
+    margin-top: 16px;
+  }
+  
+  .performance-table {
+    margin-top: 24px;
+  }
+} 
